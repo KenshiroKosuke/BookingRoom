@@ -1,10 +1,17 @@
 import express from 'express';
 import { config } from 'dotenv';
+import { router as auth} from "./routes/auth.js"
+import { connectDB } from './config/db.js';
 
 config({ path: './config/config.env' });
 
+connectDB();
+
 const app = express();
 
+// Route 
+app.use(express.json())
+app.use('/api/v1/auth', auth);
 app.get('/', (req, res) => {
     res.send(`<h1>Hello from express</h1>`);
 });
