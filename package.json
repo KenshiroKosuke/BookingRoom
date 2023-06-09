@@ -1,0 +1,20 @@
+{
+  "name": "vonder",
+  "version": "1.0.0",
+  "description": "ระบบจัดการห้องประชุม",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "Mahasamut Ngeontaweekoon",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
