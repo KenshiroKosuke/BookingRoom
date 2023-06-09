@@ -31,17 +31,17 @@ export async function register(req, res, next) {
 // @access  public
 export async function login(req, res, next) {
     try {
-        const { email, password } = req.body;
+        const { name, password } = req.body;
         // validate
-        if (!email || !password) {
+        if (!name || !password) {
             return res.status(400).json({
                 success: false,
-                msg: 'Please enter an email and password'
+                msg: 'Please enter an name and password'
             })
         }
         // check for user (get user)
         // get only hashed password
-        const user = await User.findOne({ 'email': email }, 'password')
+        const user = await User.findOne({ 'name': name }, 'password')
         if (!user) {
             return res.status(400).json({
                 success: false,
@@ -59,7 +59,7 @@ export async function login(req, res, next) {
         sendTokenResponse(user, 200, res)
         console.log(`User has logined`)
     } catch (err) {
-        return res.status(401).json({success:false, msg:'Cannot convert email or password to string'});
+        return res.status(401).json({success:false, msg:'Cannot convert name or password to string'});
     }
 }
 
