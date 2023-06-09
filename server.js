@@ -4,6 +4,9 @@ import { router as auth} from "./routes/auth.js"
 import { router as room} from "./routes/room.js"
 import { router as booking} from "./routes/booking.js"
 import { connectDB } from './config/db.js';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import hpp from 'hpp';
 
 config({ path: './config/config.env' });
 
@@ -11,8 +14,12 @@ connectDB();
 
 const app = express();
 
+app.use(helmet())
+app.use(hpp());
+
 // Route 
 app.use(express.json())
+app.use(cookieParser());
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/rooms', room);
 app.use('/api/v1/bookings', booking);
