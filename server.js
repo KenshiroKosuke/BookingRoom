@@ -1,6 +1,7 @@
 import express from 'express';
 import { config } from 'dotenv';
 import { router as auth} from "./routes/auth.js"
+import { router as room} from "./routes/room.js"
 import { connectDB } from './config/db.js';
 
 config({ path: './config/config.env' });
@@ -12,6 +13,7 @@ const app = express();
 // Route 
 app.use(express.json())
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/rooms', room);
 app.get('/', (req, res) => {
     res.send(`<h1>Hello from express</h1>`);
 });
